@@ -1,8 +1,7 @@
-FROM node:13.8.0-slim
+FROM node:10-slim
 USER root
 RUN apt-get update || : && apt-get install python -y
-USER root
-RUN npm install -g grpc
+RUN npm install grpc@1.24.1 --build-from-source
 RUN npm install -g firebase-tools
 COPY entrypoint.sh /usr/local/bin
 ENTRYPOINT ["entrypoint.sh"]
